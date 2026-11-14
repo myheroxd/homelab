@@ -338,3 +338,7 @@ Las dos subredes aparecen como rango porque son direcciones privadas estándar (
 - Pasar Home Assistant, Docker y el laboratorio de redes a ese equipo.
 - Copias automáticas al disco USB.
 - Valorar una ONT propia y un router neutro más adelante, sin prisa.
+
+---
+
+El montaje del dominio y Cloudflare está en [jesusefx-web](https://github.com/myheroxd/jesusefx-web).
