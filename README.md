@@ -194,9 +194,14 @@ Host casa-cf
 |---|---|---|
 | `id_ed25519` | PC de casa (`~/.ssh`) | Entrar al móvil |
 | `id_ed25519` (móvil) | Termux | Entrar al PC |
-| `aula` | USB | Entrar desde el aula |
+| `aula` | USB y copia en `~/.ssh/aula` | Entrar desde el aula |
+| `deploy_web` | PC de casa (`~/.ssh`) | Desplegar `jesusefx-web` en GitHub |
+| `deploy_msx` | PC de casa (`~/.ssh`) | Desplegar `MSX-Hosting` en GitHub |
+| `deploy_homelab` | PC de casa (`~/.ssh`) | Desplegar este repositorio |
 
 Las públicas están en el `authorized_keys` del equipo de destino. La del aula va con restricciones (`no-port-forwarding`, `no-agent-forwarding`, `no-X11-forwarding`).
+
+Las tres `deploy_*` son **deploy keys de GitHub**, sin passphrase y limitadas a un repositorio cada una. Una deploy key no se puede reutilizar en dos repositorios: GitHub responde «Key already in use». Si se compromete el PC, se revocan desde GitHub → Settings → Deploy keys.
 
 ---
 
@@ -300,12 +305,23 @@ journalctl -u cloudflared-ssh -n 30 --no-pager
 sudo resolvectl flush-caches
 ```
 
+### Publicar este documento
+
+```sh
+cd ~/Documentos/deepseek-harness/default-workspace
+./deploy-homelab.sh "Actualizar la red de casa"
+```
+
+Hace commit y push con la deploy key `deploy_homelab`, sin depender del agente SSH.
+
 ### Rotar claves
 
 1. Generar otra (`ssh-keygen -t ed25519`).
 2. Copiar la pública al `authorized_keys` del destino.
 3. Probar.
 4. Borrar la antigua del `authorized_keys`.
+
+Para las deploy keys: borrar la clave en GitHub → Deploy keys, generar otra, añadirla al repositorio y actualizar el script que la use.
 
 ---
 
