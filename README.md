@@ -354,7 +354,7 @@ Las dos subredes aparecen como rango porque son direcciones privadas estándar (
 - Pasar Home Assistant, Docker y el laboratorio de redes a ese equipo.
 - Copias automáticas al disco USB.
 - Valorar una ONT propia y un router neutro más adelante, sin prisa.
-- Montar el servidor de Minecraft en casa, cuando haya un mini PC encendido todo el día.
+- Montar un equipo de servicios en casa, cuando haya un mini PC encendido todo el día.
 
 ---
 
