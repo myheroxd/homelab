@@ -195,9 +195,8 @@ Host casa-cf
 | `id_ed25519` | PC de casa (`~/.ssh`) | Entrar al móvil |
 | `id_ed25519` (móvil) | Termux | Entrar al PC |
 | `aula` | USB y copia en `~/.ssh/aula` | Entrar desde el aula |
-| `deploy_web` | PC de casa (`~/.ssh`) | Desplegar `jesusefx-web` en GitHub |
-| `deploy_msx` | PC de casa (`~/.ssh`) | Desplegar `MSX-Hosting` en GitHub |
-| `deploy_homelab` | PC de casa (`~/.ssh`) | Desplegar este repositorio |
+
+Los envíos a GitHub ya no usan claves: van por HTTPS con `gh`. Las claves `deploy_web`, `deploy_msx` y `deploy_homelab` quedaron retiradas.
 
 Las públicas están en el `authorized_keys` del equipo de destino. La del aula va con restricciones (`no-port-forwarding`, `no-agent-forwarding`, `no-X11-forwarding`).
 
@@ -313,7 +312,7 @@ cd ~/Documentos/deepseek-harness/default-workspace
 ./deploy-homelab.sh "Actualizar la red de casa"
 ```
 
-Hace commit y push con la deploy key `deploy_homelab`, sin depender del agente SSH.
+Hace commit y push por HTTPS con la sesión de `gh`, sin claves ni agente SSH.
 
 ### Rotar claves
 
