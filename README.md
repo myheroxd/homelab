@@ -272,6 +272,7 @@ El montaje completo está en el otro documento del repositorio del sitio.
 | PC de casa | CachyOS | `<usuario>` | 22 (solo Tailscale) |
 | Móvil | Android + Termux | `<usuario_termux>` | 8022 |
 | Aula | Ubuntu | `<usuario_aula>` | cliente |
+| Servidor doméstico | Debian 13 | `<usuario>` | 22 (solo LAN) |
 
 ### Servicios
 
@@ -342,6 +343,7 @@ Para las deploy keys: borrar la clave en GitHub → Deploy keys, generar otra, a
 | `<IP_TAILSCALE_MOVIL>` | IP del móvil en Tailscale |
 | `<RED_BERYL>` | Subred del Beryl (`192.168.8.0/24`) |
 | `<RED_LIVEBOX>` | Subred del Livebox (`192.168.1.0/24`) |
+| `<SERVIDOR>` | IP del servidor doméstico en la red del Livebox |
 | `<operador>` | Compañía de internet |
 
 Las dos subredes aparecen como rango porque son direcciones privadas estándar (RFC 1918): sirven para entender la topología sin revelar direcciones concretas.
@@ -350,12 +352,15 @@ Las dos subredes aparecen como rango porque son direcciones privadas estándar (
 
 ## 12. Pendientes
 
-- Montar el homelab con Proxmox en un mini PC reacondicionado.
-- Pasar Home Assistant, Docker y el laboratorio de redes a ese equipo.
-- Copias automáticas al disco USB.
-- Valorar una ONT propia y un router neutro más adelante, sin prisa.
-- Montar un equipo de servicios en casa, cuando haya un mini PC encendido todo el día.
+- Montar el servidor doméstico en el Mini PC (HP ProDesk 400 G4): Debian 13 + Docker. El
+  diseño y las decisiones están en [servidor.md](servidor.md).
+- Servidor de Minecraft con whitelist, en cuanto llegue el equipo.
+- Copias automáticas del mundo fuera del servidor (al PC o a un disco USB).
+- Añadir más servicios a Docker poco a poco (Vaultwarden, Forgejo, monitorización).
+- Valorar un switch gestionado para aislar el servidor en su propia VLAN, sin prisa.
+- Valorar una ONT propia y un router neutro más adelante.
 
 ---
 
 El montaje del dominio y Cloudflare está en [jesusefx-web](https://github.com/myheroxd/jesusefx-web).
+El servidor doméstico (hardware, Debian, Docker y aislamiento de red) está en [servidor.md](servidor.md).
